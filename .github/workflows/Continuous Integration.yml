@@ -27,7 +27,7 @@ jobs:
           ./gradlew test  
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin  
                   docker build --no-cache -t prince1337/f1-world-champions:1.0 .  
-                  docker push prince1337/f1-world-champions:1.0 .  
+                  docker push prince1337/f1-world-champions:1.0
 
         env:
           DOCKER_BUILDKIT: 1
