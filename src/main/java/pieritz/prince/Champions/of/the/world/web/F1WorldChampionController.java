@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pieritz.prince.Champions.of.the.world.domain.F1WorldChampion;
-import pieritz.prince.Champions.of.the.world.dto.F1WorldChampionDTO;
 import pieritz.prince.Champions.of.the.world.services.F1WorldChampionService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -61,13 +61,18 @@ public class F1WorldChampionController {
         return ResponseEntity.ok(f1WorldChampionService.getChampionsSortedByRaces());
     }
 
-
-    @PostMapping("/")
-    public ResponseEntity<List<F1WorldChampion>> saveBulk(@RequestBody List<F1WorldChampionDTO> dtos) {
-        //List<F1WorldChampion> savedChampions = f1WorldChampionService.saveChampions(dtos);
-        return ResponseEntity.ok(f1WorldChampionService.getChampions());
+    @GetMapping("/season")
+    public ResponseEntity<List<F1WorldChampion>> getChampionsSortedBySeason() {
+        return ResponseEntity.ok(f1WorldChampionService.getChampionsSortedBySeason());
     }
 
+    @GetMapping("/points/greaterThan")
+    public ResponseEntity<List<F1WorldChampion>> filterChampionsByPointsGreaterThan(@PathVariable BigDecimal points) {
+        return ResponseEntity.ok(f1WorldChampionService.filterChampionsByPointsGreaterThan(points));
+    }
 
-
+    @GetMapping("/points/lessThan")
+    public ResponseEntity<List<F1WorldChampion>> filterChampionsByPointsLessThan(@PathVariable BigDecimal points) {
+        return ResponseEntity.ok(f1WorldChampionService.filterChampionsByPointsLessThan(points));
+    }
 }

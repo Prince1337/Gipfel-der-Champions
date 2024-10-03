@@ -29,7 +29,7 @@ public interface F1WorldChampionService {
 
     List<F1WorldChampion> getChampionsSortedByRaces();
 
-    List<F1WorldChampion> findAllByPointsGreaterThan(BigDecimal points);
+    List<F1WorldChampion> filterChampionsByPointsGreaterThan(BigDecimal points);
 
-    List<F1WorldChampion> findAllByPointsLessThan(BigDecimal points);
+    List<F1WorldChampion> filterChampionsByPointsLessThan(BigDecimal points);
 }
