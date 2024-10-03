@@ -16,7 +16,7 @@ java {
 jar {
 	manifest {
 		attributes(
-				'Main-Class': 'pieritz.prince.championsoftheworld.ChampionsOfTheWorldApplicationRuntime'
+				'Main-Class': 'pieritz.prince.championsoftheworld.ChampionsOfTheWorldApplication'
 		)
 	}
 }
