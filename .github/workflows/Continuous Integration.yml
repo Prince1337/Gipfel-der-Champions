@@ -26,15 +26,20 @@ jobs:
           ./gradlew clean build  
           ./gradlew test  
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin  
-                  docker build --no-cache -t prince1337/webapp-server:1.0 .  
-                  docker push prince1337/webapp-server:1.0
+                  docker build --no-cache -t prince1337/f1-world-champions:1.0 .  
+                  docker push prince1337/f1-world-champions:1.0 .  
 
         env:
           DOCKER_BUILDKIT: 1
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose-plugin
+
       - name: Test Containers
-        run: |  
-            docker-compose up -d --build  
+        run: |
+            docker-compose up -d --build
             docker-compose down
