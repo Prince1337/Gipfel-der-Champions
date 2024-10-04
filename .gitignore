@@ -1,6 +1,7 @@
 # Gradle related files
 **/.gradle/*
-
+**Docker-Message**/build/*
+!**/build/libs
 
 # IntelliJ IDEA files
 .idea/
@@ -26,6 +27,7 @@ logs/
 *.class
 
 # Package files
+*.jar
 *.war
 *.ear
 

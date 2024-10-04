@@ -13,14 +13,6 @@ java {
 	}
 }
 
-jar {
-	manifest {
-		attributes(
-				'Main-Class': 'pieritz.prince.Champions.of.the.world.ChampionsOfTheWorldApplication'
-		)
-	}
-}
-
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
