@@ -15,11 +15,13 @@ java {
 
 jar {
 	manifest {
-		attributes(
-				'Main-Class': 'pieritz.prince.Champions.of.the.world.ChampionsOfTheWorldApplication'
-		)
+		attributes 'Main-Class': 'pieritz.prince.Champions.of.the.world.ChampionsOfTheWorldApplication'
+	}
+	from {
+		configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
 	}
 }
+
 
 configurations {
 	compileOnly {

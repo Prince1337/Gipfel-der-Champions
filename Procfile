@@ -1,2 +1,1 @@
-web: java -Dserver.port=8080 -Dspring.profiles.active=prod $JAVA_OPTS -jar build/libs/*.jar
-
+web: java -jar build/libs/Champions.of.the.world-0.0.1-SNAPSHOT.jar
