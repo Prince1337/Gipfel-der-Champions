@@ -1,1 +1,0 @@
-web: java -jar build/libs/Champions.of.the.world-0.0.1-SNAPSHOT.jar
