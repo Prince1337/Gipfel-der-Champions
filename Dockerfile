@@ -21,4 +21,4 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar ./app.jar
 
 # Run the jar file
-CMD java -Dserver.port=$PORT $JAVA_OPTS -jar app.jar
+CMD ["java", "-jar", "app.jar"]
