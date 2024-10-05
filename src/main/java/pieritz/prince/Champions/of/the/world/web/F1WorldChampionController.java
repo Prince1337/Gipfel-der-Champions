@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1")
+@RequestMapping("/f1WorldChampions")
 public class F1WorldChampionController {
 
     private final F1WorldChampionService f1WorldChampionService;
