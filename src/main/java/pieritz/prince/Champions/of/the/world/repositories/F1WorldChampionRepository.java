@@ -1,11 +1,13 @@
 package pieritz.prince.Champions.of.the.world.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import pieritz.prince.Champions.of.the.world.domain.F1WorldChampion;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@RepositoryRestResource(path = "v1", collectionResourceRel = "v1")
 public interface F1WorldChampionRepository extends JpaRepository<F1WorldChampion, Long> {
     List<F1WorldChampion> findBySeason(int season);
 
