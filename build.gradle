@@ -13,6 +13,15 @@ java {
 	}
 }
 
+jar {
+	version = '0.0.1-SNAPSHOT'
+	enabled = false
+
+	manifest {
+		attributes 'Main-Class': 'pieritz.prince.Champions.of.the.world.ChampionsOfTheWorldApplication'
+	}
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
