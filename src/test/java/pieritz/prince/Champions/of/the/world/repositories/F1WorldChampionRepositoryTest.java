@@ -30,15 +30,13 @@ class F1WorldChampionRepositoryTest {
     private void prepareTestData() {
         repository.save(new F1WorldChampion(null, 2020, 15, "Lewis Hamilton", "Mercedes", "GB", 35, BigDecimal.valueOf(347), 11));
         repository.save(new F1WorldChampion(null, 2021, 22, "Max Verstappen", "Red Bull Racing", "NL", 24, BigDecimal.valueOf(395), 10));
-        repository.save(new F1WorldChampion(null, 2021, 20, "Valtteri Bottas", "Mercedes", "FI", 32, BigDecimal.valueOf(226), 9));
+        repository.save(new F1WorldChampion(null, 2022, 20, "Valtteri Bottas", "Mercedes", "FI", 32, BigDecimal.valueOf(226), 9));
     }
 
     @Test
     void testFindBySeason() {
-        List<F1WorldChampion> champions = repository.findBySeason(2021);
-        assertEquals(2, champions.size(), "Expected two champions for the season 2021.");
-        assertTrue(champions.stream().anyMatch(c -> c.getChampion().equals("Max Verstappen")), "Max Verstappen should be a champion for 2021.");
-        assertTrue(champions.stream().anyMatch(c -> c.getChampion().equals("Valtteri Bottas")), "Valtteri Bottas should be a champion for 2021.");
+        F1WorldChampion champion = repository.findBySeason(2021);
+        assertEquals("Max Verstappen", champion.getChampion(), "Champion should be Max Verstappen.");
     }
 
     @Test

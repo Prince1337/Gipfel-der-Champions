@@ -21,14 +21,12 @@ public class F1WorldChampionControllerTest {
     @Mock
     private F1WorldChampionService f1WorldChampionService;
 
-    private F1WorldChampionController f1WorldChampionController;
-
     private MockMvc mockMvc;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        f1WorldChampionController = new F1WorldChampionController(f1WorldChampionService);
+        F1WorldChampionController f1WorldChampionController = new F1WorldChampionController(f1WorldChampionService);
         mockMvc = MockMvcBuilders.standaloneSetup(f1WorldChampionController).build();
     }
 
@@ -50,18 +48,17 @@ public class F1WorldChampionControllerTest {
     }
 
     @Test
-    public void testGetChampionsBySeason() {
+    public void testGetChampionBySeason() {
         int season = 2021;
-        List<F1WorldChampion> champions = Arrays.asList(new F1WorldChampion(), new F1WorldChampion());
-        when(f1WorldChampionService.getChampionsBySeason(season)).thenReturn(champions);
+        F1WorldChampion champion = new F1WorldChampion();
+        when(f1WorldChampionService.getChampionBySeason(season)).thenReturn(champion);
 
         try {
             mockMvc.perform(get("/v1/season/{season}", season))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$").isArray())
                     .andExpect(jsonPath("$").isNotEmpty());
 
-            verify(f1WorldChampionService, times(1)).getChampionsBySeason(season);
+            verify(f1WorldChampionService, times(1)).getChampionBySeason(season);
         } catch (Exception e) {
             fail("Exception occurred: " + e.getMessage());
         }

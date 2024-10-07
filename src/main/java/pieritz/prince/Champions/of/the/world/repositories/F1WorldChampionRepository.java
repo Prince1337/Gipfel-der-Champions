@@ -9,7 +9,7 @@ import java.util.List;
 
 @RepositoryRestResource(path = "v1", collectionResourceRel = "v1")
 public interface F1WorldChampionRepository extends JpaRepository<F1WorldChampion, Long> {
-    List<F1WorldChampion> findBySeason(int season);
+    F1WorldChampion findBySeason(int season);
 
     boolean existsByTeam(String team);
 

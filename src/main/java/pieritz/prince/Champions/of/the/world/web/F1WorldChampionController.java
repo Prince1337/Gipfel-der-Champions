@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1")
+@CrossOrigin(origins = "*")
 public class F1WorldChampionController {
 
     private final F1WorldChampionService f1WorldChampionService;
@@ -22,8 +23,8 @@ public class F1WorldChampionController {
     }
 
     @GetMapping("/season/{season}")
-    public ResponseEntity<List<F1WorldChampion>> getChampionsBySeason(@PathVariable int season) {
-        return ResponseEntity.ok(f1WorldChampionService.getChampionsBySeason(season));
+    public ResponseEntity<F1WorldChampion> getChampionBySeason(@PathVariable int season) {
+        return ResponseEntity.ok(f1WorldChampionService.getChampionBySeason(season));
     }
 
     @GetMapping("/team/{team}")

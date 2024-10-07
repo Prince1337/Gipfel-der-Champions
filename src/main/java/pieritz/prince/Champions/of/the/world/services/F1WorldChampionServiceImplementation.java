@@ -49,10 +49,10 @@ public class F1WorldChampionServiceImplementation implements F1WorldChampionServ
     }
 
     @Override
-    public List<F1WorldChampion> getChampionsBySeason(int season) {
+    public F1WorldChampion getChampionBySeason(int season) {
         if (season <= 0) {
             logger.warn("Invalid season number: {}", season);
-            return Collections.emptyList();
+            return null;
         }
         logger.info("Fetching champions for season: {}", season);
         return f1WorldChampionRepository.findBySeason(season);

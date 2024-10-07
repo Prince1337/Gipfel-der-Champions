@@ -58,15 +58,14 @@ class F1WorldChampionServiceImplementationTest {
 
     @Test
     void testGetChampionBySeason() {
-        when(f1WorldChampionRepository.findBySeason(2023)).thenReturn(List.of(
+        when(f1WorldChampionRepository.findBySeason(2023)).thenReturn(
                 new F1WorldChampion(null, 2023, 22, "Max Verstappen", "Red Bull", "NL", 26, BigDecimal.valueOf(454.5), 15)
-        ));
+        );
 
-        List<F1WorldChampion> champions = f1WorldChampionService.getChampionsBySeason(2023);
+        F1WorldChampion champion = f1WorldChampionService.getChampionBySeason(2023);
 
-        assertNotNull(champions, "Champions list should not be null.");
-        assertEquals(1, champions.size(), "Expected one champion for the season 2023.");
-        assertEquals("Max Verstappen", champions.get(0).getChampion(), "Champion should be Max Verstappen.");
+        assertNotNull(champion, "Champion should not be null.");
+        assertEquals("Max Verstappen", champion.getChampion(), "Champion should be Max Verstappen.");
     }
 
     private F1WorldChampionDTO createValidDTO() {

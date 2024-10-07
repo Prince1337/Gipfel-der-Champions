@@ -71,14 +71,14 @@ public class F1WorldChampionControllerIntegrationTest {
     }
 
     @Test
-    public void testGetChampionsBySeason() throws Exception {
-        List<F1WorldChampion> champions = Collections.singletonList(champion1);
-        Mockito.when(f1WorldChampionService.getChampionsBySeason(2021)).thenReturn(champions);
+    public void testGetChampionBySeason() throws Exception {
+        F1WorldChampion champion = champion1;
+        Mockito.when(f1WorldChampionService.getChampionBySeason(2021)).thenReturn(champion);
 
         mockMvc.perform(get("/v1/season/{season}", 2021))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].season").value(2021))
-                .andExpect(jsonPath("$[0].champion").value("Lewis Hamilton"));
+                .andExpect(jsonPath("season").value(2021))
+                .andExpect(jsonPath("champion").value("Lewis Hamilton"));
     }
 
     @Test

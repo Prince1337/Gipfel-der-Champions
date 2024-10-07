@@ -11,7 +11,7 @@ public interface F1WorldChampionService {
 
     List<F1WorldChampion> getChampions();
 
-    List<F1WorldChampion> getChampionsBySeason(int season);
+    F1WorldChampion getChampionBySeason(int season);
 
     List<F1WorldChampion> getChampionsByTeam(String team);
 
