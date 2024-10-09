@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import pieritz.prince.Champions.of.the.world.domain.F1WorldChampion;
@@ -16,6 +17,7 @@ import pieritz.prince.Champions.of.the.world.services.F1WorldChampionService;
 import java.util.Arrays;
 import java.util.List;
 
+@ActiveProfiles("test")
 public class F1WorldChampionControllerTest {
 
     @Mock
