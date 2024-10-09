@@ -44,7 +44,7 @@ INSERT INTO f1_world_champion (season, races, champion, team, nationality, age, 
 (1992, 16, 'Nigel Mansell', 'Williams-Renault', 'GBR', 39, 108, 9),
 (1991, 16, 'Ayrton Senna', 'McLaren-Honda', 'BRA', 31, 96, 7),
 (1990, 16, 'Ayrton Senna', 'McLaren-Honda', 'BRA', 30, 78, 6),
-(1989, 16, 'Alain Prost', 'McLaren-Honda', 'FRA', 34, 76, 4);
+(1989, 16, 'Alain Prost', 'McLaren-Honda', 'FRA', 34, 76, 4),
 (1988, 16, 'Ayrton Senna', 'McLaren-Honda', 'BRA', 28, 90.0, 8),
 (1987, 16, 'Nelson Piquet', 'Williams-Honda', 'BRA', 35, 73.0, 3),
 (1986, 16, 'Alain Prost', 'McLaren-TAG-Porsche', 'FRA', 31, 72.0, 4),
