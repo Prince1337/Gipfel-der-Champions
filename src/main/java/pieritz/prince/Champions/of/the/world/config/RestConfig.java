@@ -18,8 +18,8 @@ public class RestConfig implements RepositoryRestConfigurer {
         config.getExposureConfiguration()
                 .forDomainType(F1WorldChampion.class)
                 .withItemExposure((metdata, httpMethods) -> httpMethods
-                        .disable(HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE)
-                ).withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE));
+                        .disable(HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.PATCH)
+                ).withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.PATCH));
 
     }
 }
