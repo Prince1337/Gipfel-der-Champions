@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @ActiveProfiles("test")
+@Transactional
 public class F1WorldChampionControllerTest {
 
     @Mock
