@@ -9,9 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import pieritz.prince.Champions.of.the.world.domain.F1WorldChampion;
 import pieritz.prince.Champions.of.the.world.services.F1WorldChampionService;
@@ -21,10 +23,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(F1WorldChampionController.class)
 @ActiveProfiles("test")
-@Transactional
+@TestPropertySource(locations = "classpath:application-test.properties")
 public class F1WorldChampionControllerIntegrationTest {
 
     @Autowired
