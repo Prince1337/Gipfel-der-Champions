@@ -2,35 +2,47 @@ package pieritz.prince.Champions.of.the.world.repositories;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Transactional;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import pieritz.prince.Champions.of.the.world.domain.F1WorldChampion;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-@SpringBootTest
-@ActiveProfiles("test")
-@Transactional
 class F1WorldChampionRepositoryTest {
 
-    @Autowired
+    @Mock
     private F1WorldChampionRepository repository;
+
+    @InjectMocks
+    private F1WorldChampionRepositoryTest testInstance;
 
     @BeforeEach
     void setUp() {
-        repository.deleteAll();
-        prepareTestData();
-    }
+        MockitoAnnotations.openMocks(this);
 
-    private void prepareTestData() {
-        repository.save(new F1WorldChampion(null, 2020, 15, "Lewis Hamilton", "Mercedes", "GB", 35, BigDecimal.valueOf(347), 11));
-        repository.save(new F1WorldChampion(null, 2021, 22, "Max Verstappen", "Red Bull Racing", "NL", 24, BigDecimal.valueOf(395), 10));
-        repository.save(new F1WorldChampion(null, 2022, 20, "Valtteri Bottas", "Mercedes", "FI", 32, BigDecimal.valueOf(226), 9));
+        F1WorldChampion lewisHamilton = new F1WorldChampion(null, 2020, 15, "Lewis Hamilton", "Mercedes", "GB", 35, BigDecimal.valueOf(347), 11);
+        F1WorldChampion maxVerstappen = new F1WorldChampion(null, 2021, 22, "Max Verstappen", "Red Bull Racing", "NL", 24, BigDecimal.valueOf(395), 10);
+        F1WorldChampion valtteriBottas = new F1WorldChampion(null, 2022, 20, "Valtteri Bottas", "Mercedes", "FI", 32, BigDecimal.valueOf(226), 9);
+
+        when(repository.findBySeason(2021)).thenReturn(maxVerstappen);
+        when(repository.existsByTeam("Mercedes")).thenReturn(true);
+        when(repository.existsByTeam("Ferrari")).thenReturn(false);
+        when(repository.existsByNationality("GB")).thenReturn(true);
+        when(repository.existsByNationality("USA")).thenReturn(false);
+        when(repository.findByNationalityOrderBySeasonAsc("GB")).thenReturn(List.of(lewisHamilton));
+        when(repository.findAllByOrderByRacesDesc()).thenReturn(Arrays.asList(maxVerstappen, lewisHamilton, valtteriBottas));
+        when(repository.findAllByPointsGreaterThan(BigDecimal.valueOf(300)))
+                .thenReturn(Arrays.asList(lewisHamilton, maxVerstappen));
+        when(repository.findAllByPointsLessThan(BigDecimal.valueOf(300)))
+                .thenReturn(List.of(valtteriBottas));
+        when(repository.findByTeamOrderBySeasonAsc("Mercedes"))
+                .thenReturn(Arrays.asList(lewisHamilton, valtteriBottas));
     }
 
     @Test
