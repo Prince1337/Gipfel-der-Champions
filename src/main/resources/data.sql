@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS f1_world_champion (
     team VARCHAR(255) NOT NULL,
     nationality VARCHAR(3) NOT NULL,
     age INT NOT NULL,
-    points DECIMAL(10, 1) NOT NULL,
+    points DOUBLE NOT NULL,
     wins INT NOT NULL
 );
 
